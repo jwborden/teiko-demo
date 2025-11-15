@@ -17,6 +17,6 @@ COPY imported (
     nk_cell,
     monocyte
 )
-FROM './cell-count.csv'
+FROM '../init/cell-count.csv'
 DELIMITER ','
 CSV HEADER;

@@ -15,7 +15,9 @@ if [ -d "$DB_DIR" ]; then
             ;;
         [Yy]* )
             echo "Replacing $DB_DIR..."
+            pg_ctl -D "$DB_DIR" stop
             rm -rf "$DB_DIR"
+            rm -rf /tmp/.s.PGSQL.*
             mkdir -p "$DB_DIR"
             ;;
         * )
@@ -36,10 +38,10 @@ psql -h localhost -p 5433 -d postgres -c "CREATE ROLE demo_user LOGIN PASSWORD '
 psql -h localhost -p 5433 -d postgres -c "CREATE DATABASE demo_db OWNER demo_user ENCODING 'UTF8' LC_COLLATE='C' LC_CTYPE='C';"
 
 # Set up the schema
-# psql -h localhost -p 5433 -d demo_db -f ./db/init/create_tables.sql
+psql -h localhost -p 5433 -d demo_db -f ./db/init/create_tables.sql
 
 # Seed the data
-# psql -h localhost -p 5433 -d demo_db -f ./db/init/seed_data.sql
+psql -h localhost -p 5433 -d demo_db -f ./db/init/seed_data.sql
 
 # NOTE: The database can be managed as follows
 
