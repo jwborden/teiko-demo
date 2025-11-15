@@ -2,10 +2,48 @@
 This repository holds my response to the [Teiko Technical](https://forms.gle/HAKtRmXipzwR29EJ8).
 
 ## How to run the code
-TODO
+<!-- Any instructions needed to run your code and reproduce the outputs (We will run your code using GitHub Codespaces). -->
+
+### Clone the repository
+Use GitHub to access the repository.
+```sh
+git clone https://github.com/jwborden/teiko-demo.git
+cd teiko-demo
+```
+
+### System requirements and OS dependencies
+This demo app is designed to run locally on macOS>=14. Alternate operating systems and dependency versions may be used (e.g., GitHub Codespaces), but here I demonstrate how the dependencies are configured on my machine.
+
+The app requires Git, Python 3.13, and PostgreSQL 17. They can be installed with homebrew as in `./get-os-deps.sh`. Note that these are the only dependencies that are not isolated to the repository. You may have another way you want to install them based on your machine configuration.
+
+I recommend using a virtual python environment at `./back/.venv`. This and python dependencies can be installed as in `set-py-venv.sh`.
+
+### Set up the database
+An isolated database should be prepped inside the repository at `./db/postgres-data`. Run `init-db.sh` to prep the database.
+
+### Turn on the api
+...TODO...
+
+### Open the front end
+...TODO...
 
 ## Comments
-TODO
+
+### Schema
+<!-- An explanation of the schema used for the relational database, with rationale for the design and how this would scale if there were hundreds of projects, thousands of samples and various types of analytics you’d want to perform. -->
+...TODO...
+
+![ER Schema](./db-schema-er-model.jpeg)
+
+...TODO: Explain...
+
+### Code Structure
+<!-- A brief overview of your code structure and an explanation of why you designed it the way you did. -->
+...TODO...
+
+### Dashboard
+<!-- A link to the dashboard. -->
+...TODO...
 
 ## Instructions
 

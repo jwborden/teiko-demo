@@ -1,3 +1,9 @@
+# Misc
+tmp
+logs
+.DS_Store
+postgres-data
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
