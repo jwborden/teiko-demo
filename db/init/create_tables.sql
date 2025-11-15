@@ -21,3 +21,5 @@ CREATE TABLE IF NOT EXISTS imported (
     monocyte INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE imported OWNER TO demo_user;
