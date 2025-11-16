@@ -31,11 +31,15 @@ An isolated database should be prepped inside the repository at `./db/postgres-d
 
 ### Schema
 <!-- An explanation of the schema used for the relational database, with rationale for the design and how this would scale if there were hundreds of projects, thousands of samples and various types of analytics you’d want to perform. -->
-...TODO...
+The schema for my relational database is shown below. I separate intuitive entities of project, subject, and sample and consider condition and treatment as weak entities, as they depend on another entity for relevance. This schema considers the following constraints:
+- One subject can be included in multiple projects, and each project includes multiple subjects.
+- Each subject may give multiple blood samples over time.
+- Conditions do not exist independent of subjects, but a subject may have multiple conditions
+- Similarly, treatments do not exist independent of subjects with conditions, but multiple treatments may be administered.
+The purpose of tightly controlling entity types, their relationships, and their attributes is to enable scalability. This clean management will enable fast lookups, intuitive organization, and simpler analysis for hundreds of projects and thousands of samples.
+I initialize the database with `./init-db.sh` and files at the directory `./db/init`. More details can be found in those files.
 
-![ER Schema](./db-schema-er-model.jpeg)
-
-...TODO: Explain...
+![ER Schema](./db/design/entity_relationship_schema.jpeg)
 
 ### Code Structure
 <!-- A brief overview of your code structure and an explanation of why you designed it the way you did. -->
