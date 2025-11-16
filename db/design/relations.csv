@@ -1,0 +1,18 @@
+relation,project,,,,,,,,
+attribute,id,,,,,,,,
+foreign key references,,,,,,,,,
+relation,subject,,,,,,,,
+attribute,id,age,sex,,,,,,
+foreign key references,,,,,,,,,
+relation,sample,,,,,,,,
+attribute,id,sample_type,time_from_treatment_start,b_cell,cd8_t_cell,cd4_t_cell,nk_cell,monocyte,subject
+foreign key references,,,,,,,,,subject(id)
+relation,condition,,,,,,,,
+attribute,subject_id,name,,,,,,,
+foreign key references,subject(id),,,,,,,,
+relation,treatment,,,,,,,,
+attribute,subject_id,condition_name,name,response,,,,,
+foreign key references,subject(id),condition(name),,,,,,,
+relation,project_subjects,,,,,,,,
+attribute,project_id,subject_id,,,,,,,
+foreign key references,project(id),subject(id),,,,,,,
