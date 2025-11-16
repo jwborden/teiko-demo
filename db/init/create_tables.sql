@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS project_subjects (
 
 -- Handle ownership
 ALTER TABLE imported OWNER TO demo_user;
-ALTER TABLE subject OWNER TO demo_user;
 ALTER TABLE project OWNER TO demo_user;
+ALTER TABLE subject OWNER TO demo_user;
 ALTER TABLE sample OWNER TO demo_user;
 ALTER TABLE med_condition OWNER TO demo_user;
 ALTER TABLE treatment OWNER TO demo_user;
