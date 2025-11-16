@@ -5,7 +5,7 @@ relation,subject,,,,,,,,
 attribute,id,age,sex,,,,,,
 foreign key references,,,,,,,,,
 relation,sample,,,,,,,,
-attribute,id,sample_type,time_from_treatment_start,b_cell,cd8_t_cell,cd4_t_cell,nk_cell,monocyte,subject
+attribute,id,sample_type,time_from_treatment_start,b_cell,cd8_t_cell,cd4_t_cell,nk_cell,monocyte,subject_id
 foreign key references,,,,,,,,,subject(id)
 relation,condition,,,,,,,,
 attribute,subject_id,name,,,,,,,
