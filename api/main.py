@@ -2,11 +2,12 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
-from routers import (
+from api.routers import (
     projects_router,
     subjects_router,
     samples_router,
     treatments_router,
+    user_stories_router,
 )
 
 
@@ -25,6 +26,7 @@ def read_html():
     return basic_html()
 
 
+app.include_router(user_stories_router, prefix="", tags=["user_stories"])
 app.include_router(projects_router, prefix="/projects", tags=["projects"])
 app.include_router(subjects_router, prefix="/subjects", tags=["subjects"])
 app.include_router(samples_router, prefix="/samples", tags=["samples"])

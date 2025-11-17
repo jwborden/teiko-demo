@@ -1,4 +1,4 @@
-from crud import get_project_by_project_id
+from api.crud import get_project_by_project_id
 
 
 def get_projects(project_ids: list[str] | None = None) -> list[str]:
@@ -20,3 +20,15 @@ def basic_html() -> str:
     </html>
     """
     return out
+
+
+def data_overview():
+    return {"message": "This is the data overview service."}
+
+
+def statistical_analysis():
+    return {"message": "This is the statistical analysis service."}
+
+
+def data_subset_analysis():
+    return {"message": "This is the data subset analysis service."}

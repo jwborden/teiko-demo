@@ -1,6 +1,6 @@
 from typing import Optional, Sequence
 
-from models import (
+from api.models import (
     Import,
     Project,
     Subject,
