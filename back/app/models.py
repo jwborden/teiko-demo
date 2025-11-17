@@ -8,22 +8,22 @@ class Base(DeclarativeBase):
 
 class Import(Base):
     __tablename__ = "imported"
-    uid: Mapped[str] = mapped_column(primary_key=True, default="gen_random_uuid()")
+    uid: Mapped[str] = mapped_column(String(36), primary_key=True, default="gen_random_uuid()")
     project: Mapped[Optional[str]] = mapped_column(String(100))
     subject: Mapped[Optional[str]] = mapped_column(String(100))
     condition: Mapped[Optional[str]] = mapped_column(String(100))
-    age: Mapped[Optional[int]]
+    age: Mapped[Optional[int]] = mapped_column(Integer)
     sex: Mapped[Optional[str]] = mapped_column(String(100))
     treatment: Mapped[Optional[str]] = mapped_column(String(100))
     response: Mapped[Optional[str]] = mapped_column(String(100))
     sample: Mapped[Optional[str]] = mapped_column(String(100))
     sample_type: Mapped[Optional[str]] = mapped_column(String(100))
-    time_from_treatment_start: Mapped[Optional[int]]
-    b_cell: Mapped[Optional[int]]
-    cd8_t_cell: Mapped[Optional[int]]
-    cd4_t_cell: Mapped[Optional[int]]
-    nk_cell: Mapped[Optional[int]]
-    monocyte: Mapped[Optional[int]]
+    time_from_treatment_start: Mapped[Optional[int]] = mapped_column(Integer)
+    b_cell: Mapped[Optional[int]] = mapped_column(Integer)
+    cd8_t_cell: Mapped[Optional[int]] = mapped_column(Integer)
+    cd4_t_cell: Mapped[Optional[int]] = mapped_column(Integer)
+    nk_cell: Mapped[Optional[int]] = mapped_column(Integer)
+    monocyte: Mapped[Optional[int]] = mapped_column(Integer)
 
 
 class Project(Base):
@@ -73,7 +73,7 @@ class Treatment(Base):
     )
 
 
-class ProjectSubjects(Base):
+class ProjectSubject(Base):
     __tablename__ = "project_subjects"
     project_id: Mapped[str] = mapped_column(ForeignKey("project.project_id"), primary_key=True)
     subject_id: Mapped[str] = mapped_column(ForeignKey("subject.subject_id"), primary_key=True)
