@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ./back
-
 VENV_DIR="./.venv"
 
 if [ -d "$VENV_DIR" ]; then

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class Import(BaseModel):
+class PydImport(BaseModel):
     project: str
     subject: str
     condition: str | None = None
@@ -18,17 +18,17 @@ class Import(BaseModel):
     monocyte: int | None = None
 
 
-class Project(BaseModel):
+class PydProject(BaseModel):
     project_id: str
 
 
-class Subject(BaseModel):
+class PydSubject(BaseModel):
     subject_id: str
     age: int | None = None
     sex: str | None = None
 
 
-class Sample(BaseModel):
+class PydSample(BaseModel):
     sample_id: str
     sample_type: str | None = None
     time_from_treatment_start: int | None = None
@@ -40,18 +40,18 @@ class Sample(BaseModel):
     subject_id: str
 
 
-class SubjectCondition(BaseModel):
+class PydSubjectCondition(BaseModel):
     subject_id: str
     condition_name: str
 
 
-class Treatment(BaseModel):
+class PydTreatment(BaseModel):
     subject_id: str
     subject_condition_name: str
     treatment_name: str
     response: bool | None = None
 
 
-class ProjectSubjects(BaseModel):
+class PydProjectSubjects(BaseModel):
     project_id: str
     subject_id: str

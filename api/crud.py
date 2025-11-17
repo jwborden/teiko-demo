@@ -48,7 +48,7 @@ def create_projects(projects: list[Project]) -> None:
         return None
 
 
-def get_project_by_project_id(project_ids: list[str]) -> Sequence[Row[tuple[Project]]]:
+def get_project_by_project_id(project_ids: Optional[list[str]] = None) -> Sequence[Row[tuple[Project]]]:
     with SessionLocal as db:
         stmt = select(Project)
         if project_ids:
