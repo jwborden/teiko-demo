@@ -21,22 +21,22 @@ DELIMITER ','
 CSV HEADER;
 
 -- Populate project
-INSERT INTO project (id)
+INSERT INTO project (project_id)
 SELECT DISTINCT project
 FROM imported
 WHERE project IS NOT NULL
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (project_id) DO NOTHING;
 
 -- Populate subject
-INSERT INTO subject (id, age, sex)
+INSERT INTO subject (subject_id, age, sex)
 SELECT DISTINCT subject, age, sex
 FROM imported
 WHERE subject IS NOT NULL
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (subject_id) DO NOTHING;
 
 -- Populate sample
 INSERT INTO sample (
-    id,
+    sample_id,
     sample_type,
     time_from_treatment_start,
     b_cell,
@@ -59,21 +59,21 @@ SELECT DISTINCT
 FROM imported
 WHERE sample IS NOT NULL
 AND subject IS NOT NULL
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (sample_id) DO NOTHING;
 
--- Populate med_condition
-INSERT INTO med_condition (subject_id, name)
+-- Populate subject_condition
+INSERT INTO subject_condition (subject_id, condition_name)
 SELECT DISTINCT subject, condition
 FROM imported
 WHERE subject IS NOT NULL
 AND condition IS NOT NULL
-ON CONFLICT (subject_id, name) DO NOTHING;
+ON CONFLICT (subject_id, condition_name) DO NOTHING;
 
 -- Populate treatment
 INSERT INTO treatment (
     subject_id,
-    med_condition_name,
-    name,
+    subject_condition_name,
+    treatment_name,
     response
 )
 SELECT DISTINCT
@@ -91,8 +91,8 @@ AND condition IS NOT NULL
 AND treatment IS NOT NULL
 ON CONFLICT (
     subject_id,
-    med_condition_name,
-    name
+    subject_condition_name,
+    treatment_name
 ) DO NOTHING;
 
 -- Populate project_subjects

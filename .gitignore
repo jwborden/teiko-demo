@@ -1,7 +1,11 @@
 # Misc
+
+tmp.*
+*.tmp
+tmp/**
+
 .vscode
 .DS_Store
-tmp
 logs
 postgres-data
 

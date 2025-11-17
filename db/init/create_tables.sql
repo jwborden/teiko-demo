@@ -21,17 +21,17 @@ CREATE TABLE IF NOT EXISTS imported (
 
 -- These tables are more clean
 CREATE TABLE IF NOT EXISTS project (
-    id VARCHAR(100) PRIMARY KEY
+    project_id VARCHAR(100) PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS subject (
-    id VARCHAR(100) PRIMARY KEY,
+    subject_id VARCHAR(100) PRIMARY KEY,
     age INT CHECK (age>=0),
     sex VARCHAR(100) CHECK (sex IN ('M', 'F', 'Other'))
 );
 
 CREATE TABLE IF NOT EXISTS sample (
-    id VARCHAR(100) PRIMARY KEY,
+    sample_id VARCHAR(100) PRIMARY KEY,
     sample_type VARCHAR(100) CHECK (sample_type IN ('PBMC', 'WB')),
     time_from_treatment_start INT,
     b_cell INT,
@@ -42,35 +42,35 @@ CREATE TABLE IF NOT EXISTS sample (
     subject_id VARCHAR(100) NOT NULL,
 
     FOREIGN KEY (subject_id)
-        REFERENCES subject(id)
+        REFERENCES subject(subject_id)
         ON DELETE RESTRICT
 );
 
-CREATE TABLE IF NOT EXISTS med_condition (
+CREATE TABLE IF NOT EXISTS subject_condition (
     subject_id VARCHAR(100) NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    condition_name VARCHAR(100) NOT NULL,
 
-    PRIMARY KEY (subject_id, name),
+    PRIMARY KEY (subject_id, condition_name),
     
     FOREIGN KEY (subject_id)
-        REFERENCES subject(id)
+        REFERENCES subject(subject_id)
         ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS treatment (
     subject_id VARCHAR(100) NOT NULL,
-    med_condition_name VARCHAR(100) NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    subject_condition_name VARCHAR(100) NOT NULL,
+    treatment_name VARCHAR(100) NOT NULL,
     response BOOLEAN,
 
-    PRIMARY KEY (subject_id, med_condition_name, name),
+    PRIMARY KEY (subject_id, subject_condition_name, treatment_name),
     
     FOREIGN KEY (subject_id)
-        REFERENCES subject(id)
+        REFERENCES subject(subject_id)
         ON DELETE CASCADE,
 
-    FOREIGN KEY (subject_id, med_condition_name)
-        REFERENCES med_condition(subject_id, name)
+    FOREIGN KEY (subject_id, subject_condition_name)
+        REFERENCES subject_condition(subject_id, condition_name)
         ON DELETE CASCADE
 );
 
@@ -81,11 +81,11 @@ CREATE TABLE IF NOT EXISTS project_subjects (
     PRIMARY KEY (project_id, subject_id),
     
     FOREIGN KEY (project_id)
-        REFERENCES project(id)
+        REFERENCES project(project_id)
         ON DELETE CASCADE,
     
     FOREIGN KEY (subject_id)
-        REFERENCES subject(id)
+        REFERENCES subject(subject_id)
         ON DELETE CASCADE
 );
 
@@ -94,6 +94,6 @@ ALTER TABLE imported OWNER TO demo_user;
 ALTER TABLE project OWNER TO demo_user;
 ALTER TABLE subject OWNER TO demo_user;
 ALTER TABLE sample OWNER TO demo_user;
-ALTER TABLE med_condition OWNER TO demo_user;
+ALTER TABLE subject_condition OWNER TO demo_user;
 ALTER TABLE treatment OWNER TO demo_user;
 ALTER TABLE project_subjects OWNER TO demo_user;
