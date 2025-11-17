@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teiko Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Teiko Demo</h1>
+    </header>
+
+    <main>
+        <section class="hero" aria-label="Hero">
+            <img src="./hero.png" height="600" alt="Teiko Demo Hero"/>
+        </section>
+
+        <section class="navigation" aria-label="Navigation">
+            <nav class="actions" aria-label="Primary actions">
+                <button class="action-btn" type="button" onclick="goTo('http://0.0.0.0:8000/html')">Data Overview</button>
+                <button class="action-btn" type="button" onclick="goTo('http://0.0.0.0:8000/html')">Statistical Analysis</button>
+                <button class="action-btn" type="button" onclick="goTo('http://0.0.0.0:8000/html')">Data Subset Analysis</button>
+
+                <script>
+                    function goTo(path) {
+                        window.location.href = path;
+                    }
+                </script>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+            <span class="mvp-note">This is an MVP</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

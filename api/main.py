@@ -1,9 +1,8 @@
-# from typing import Optional, Union
-
 import uvicorn
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 
-from api.routers import (
+from routers import (
     projects_router,
     subjects_router,
     samples_router,
@@ -17,6 +16,13 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
+
+@app.get("/html", response_class=HTMLResponse)
+def read_html():
+    from api.services import basic_html
+
+    return basic_html()
 
 
 app.include_router(projects_router, prefix="/projects", tags=["projects"])
