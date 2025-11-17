@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS subject_condition (
     condition_name VARCHAR(100) NOT NULL,
 
     PRIMARY KEY (subject_id, condition_name),
-    
+
     FOREIGN KEY (subject_id)
         REFERENCES subject(subject_id)
         ON DELETE CASCADE
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS treatment (
     response BOOLEAN,
 
     PRIMARY KEY (subject_id, subject_condition_name, treatment_name),
-    
+
     FOREIGN KEY (subject_id)
         REFERENCES subject(subject_id)
         ON DELETE CASCADE,
@@ -79,11 +79,11 @@ CREATE TABLE IF NOT EXISTS project_subjects (
     subject_id VARCHAR(100) NOT NULL,
 
     PRIMARY KEY (project_id, subject_id),
-    
+
     FOREIGN KEY (project_id)
         REFERENCES project(project_id)
         ON DELETE CASCADE,
-    
+
     FOREIGN KEY (subject_id)
         REFERENCES subject(subject_id)
         ON DELETE CASCADE

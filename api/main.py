@@ -1,4 +1,4 @@
-from typing import Optional, Union
+# from typing import Optional, Union
 
 import uvicorn
 from fastapi import FastAPI
@@ -17,6 +17,7 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
 
 app.include_router(projects_router, prefix="/projects", tags=["projects"])
 app.include_router(subjects_router, prefix="/subjects", tags=["subjects"])

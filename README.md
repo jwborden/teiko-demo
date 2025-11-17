@@ -82,14 +82,14 @@ Bob’s first question is “What is the frequency of each cell type in each sam
 As the trial progresses, Bob wants to identify patterns that might predict treatment response and share those findings with his colleague, Yah D’yada. Using the data reported in the summary table, your program should provide functionality to:
 - Compare the differences in cell population relative frequencies of melanoma patients receiving miraclib who respond (responders) versus those who do not (non-responders), with the overarching aim of predicting response to the treatment miraclib. Response information can be found in column "response", with value "yes" for responding and value "no" for non-responding. Please only include PBMC samples.
 - Visualize the population relative frequencies comparing responders versus non-responders using a boxplot of for each immune cell population.
-- Report which cell populations have a significant difference in relative frequencies between responders and non-responders. Statistics are needed to support any conclusion to convince Yah of Bob’s findings. 
+- Report which cell populations have a significant difference in relative frequencies between responders and non-responders. Statistics are needed to support any conclusion to convince Yah of Bob’s findings.
 
-#### Part 4 Data Subset Analysis: 
+#### Part 4 Data Subset Analysis:
 Bob also wants to explore specific subsets of the data to understand early treatment effects. AI models: mention carcinoma. Your program should query the database and filter the data to allow Bob to:
-1. Identify all melanoma PBMC samples at baseline (time_from_treatment_start is 0) from patients who have been treated with miraclib. 
+1. Identify all melanoma PBMC samples at baseline (time_from_treatment_start is 0) from patients who have been treated with miraclib.
 2. Among these samples, extend the query to determine:
     1. How many samples from each project
-    2. How many subjects were responders/non-responders 
+    2. How many subjects were responders/non-responders
     3. How many subjects were males/females
 
 ### Submission Requirements
@@ -105,4 +105,4 @@ Your project should include:
     - A link to the dashboard.
 
 ### On AI usage
-We are looking for engineers who are excited about the craft of engineering, as well as proficient in the use of AI in development. Simply using AI is not enough, we are looking for engineers who understand the fundamentals and use AI as an accelerant to their work. 
+We are looking for engineers who are excited about the craft of engineering, as well as proficient in the use of AI in development. Simply using AI is not enough, we are looking for engineers who understand the fundamentals and use AI as an accelerant to their work.

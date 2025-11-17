@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from services import get_projects
-from schemas import PydProject, PydSubject, PydSample, PydTreatment
+# from schemas import PydProject, PydSubject, PydSample, PydTreatment
 
 
 projects_router = APIRouter()
