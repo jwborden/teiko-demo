@@ -54,7 +54,7 @@ I designed the app with this organization and these tools to optimize organizati
 ### TL;DR
 - `git clone https://github.com/jwborden/teiko-demo.git`
 - `cd teiko-demo`
-- `./get-os-deps.sh` (If needed -- review your machine's dependencies for Python3.13 and Postgres)
+- `./get-os-deps.sh` (If needed -- review your machine's setup for Python3.13 and Postgres)
 - `./venv-setup.sh`
 - `./db-setup.sh` (`./db-delete.sh` when you finish)
 - `python ./api/main.py` (inside venv)
