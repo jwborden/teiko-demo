@@ -1,4 +1,6 @@
 from fastapi import APIRouter
+from fastapi.responses import HTMLResponse
+
 
 from api.services import (
     get_projects,
@@ -22,8 +24,8 @@ def read_projects(proj_id: str | None = None):
     return projects
 
 
-@user_stories_router.get("/data-overview")
-def read_data_overview():
+@user_stories_router.get("/data-overview", response_class=HTMLResponse)
+def read_data_overview() -> str:
     return data_overview()
 
 
