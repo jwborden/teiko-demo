@@ -378,18 +378,6 @@ def statistical_analysis() -> str:
 
 
 def data_subset_analysis() -> str:
-    """
-
-
-    #### Part 4 Data Subset Analysis:
-    Your program should query the database and filter the data to allow Bob to:
-    1. Identify all melanoma PBMC samples at baseline (time_from_treatment_start is 0) from patients who have been treated with miraclib.
-    2. Among these samples, extend the query to determine:
-        1. How many samples from each project
-        2. How many subjects were responders/non-responders
-        3. How many subjects were males/females
-
-    """
     # Get samples of type PBMC with treatment type miraclib
     samples = get_for_subset_analysis(
         sample_types=["PBMC"],
