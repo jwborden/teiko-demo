@@ -11,21 +11,21 @@ git clone https://github.com/jwborden/teiko-demo.git
 cd teiko-demo
 ```
 
-### System requirements and OS dependencies
+### Requirements and dependencies
 This demo app is designed to run locally on macOS>=14. Alternate operating systems and dependency versions may be used (e.g., GitHub Codespaces), but here I demonstrate how the dependencies are configured on my machine.
 
 The app requires Git, Python 3.13, and PostgreSQL 17. They can be installed with homebrew as in `./get-os-deps.sh`. Note that these are the only dependencies that are not isolated to the repository. You may have another way you want to install them based on your machine configuration.
 
-I recommend using a virtual python environment at `./back/.venv`. This and python dependencies can be installed as in `set-py-venv.sh`.
+Run `./venv-setup.sh` to prep the python environment, including creating a virtual environment and installing python dependencies with pip.
 
 ### Set up the database
-An isolated database should be prepped inside the repository at `./db/postgres-data`. Run `init-db.sh` to prep the database.
+Run `./db-setup.sh` to prep the database. An isolated database at `./db/postgres-data` will be initialized, seeded, and started. Run `./db-delete.sh` after the demo to stop and delete the database.
 
 ### Turn on the api
-...TODO...
+Run `python ./api/main.py` from inside the virtual environment to turn on the api.
 
 ### Open the front end
-...TODO...
+Open `./client/index.html` for a landing page that will guide you to a dashboard for each user story.
 
 ## Comments
 
@@ -39,15 +39,26 @@ The schema for my relational database is shown below. I separate intuitive entit
 The purpose of tightly controlling entity types, their relationships, and their attributes is to enable scalability. This clean management will enable fast lookups, intuitive organization, and simpler analysis for hundreds of projects and thousands of samples.
 I initialize the database with `./init-db.sh` and files at the directory `./db/init`. More details can be found in those files.
 
-![ER Schema](./db/design/entity_relationship_schema.jpeg)
+<img src="./db/design/entity_relationship_schema.jpeg" alt="ER Schema" width="1200"/>
 
 ### Code Structure
 <!-- A brief overview of your code structure and an explanation of why you designed it the way you did. -->
-...TODO...
+This repository contains a minimal app with the following:
 
-### Dashboard
-<!-- A link to the dashboard. -->
-...TODO...
+- Landing page (client): HTML/CSS
+- API: FastAPI, Pydantic, SQLAlchemy
+- Database: PostgreSQL, initialized and seeded with shell and sql scripts.
+
+I designed the app with this organization and these tools to optimize organization and scalability. I considered building a single Python GUI app (e.g., PyQt), or organizing my api with more files, each containing one model, as in a larger project, but settled on this structure for a balance of organization and simplicity. Notably, I kept the frontend minimal, with a static landing page in HTML and api endpoints that return HTML content for dashboard pages. In a larger or longer-term project I may have used Vue and JavaScript to streamline visualization, etc., but this structure allowed me to take advantage of .to_html() methods in Python Pandas and Plotly, allowing greater simplicity without additional dependencies for Vue, npm, etc.
+
+### TL;DR
+- `git clone https://github.com/jwborden/teiko-demo.git`
+- `cd teiko-demo`
+- `./get-os-deps.sh` (If needed -- review your machine's dependencies for Python3.13 and Postgres)
+- `./venv-setup.sh`
+- `./db-setup.sh` (`./db-delete.sh` when you finish)
+- `python ./api/main.py` (inside venv)
+- `open ./client/index.html`
 
 ## Instructions
 
