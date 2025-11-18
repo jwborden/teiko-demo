@@ -29,11 +29,11 @@ def read_data_overview() -> str:
     return data_overview()
 
 
-@user_stories_router.get("/statistical-analysis")
-def read_statistical_analysis():
+@user_stories_router.get("/statistical-analysis", response_class=HTMLResponse)
+def read_statistical_analysis() -> str:
     return statistical_analysis()
 
 
-@user_stories_router.get("/data-subset-analysis")
-def read_data_subset_analysis():
+@user_stories_router.get("/data-subset-analysis", response_class=HTMLResponse)
+def read_data_subset_analysis() -> str:
     return data_subset_analysis()

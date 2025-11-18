@@ -151,6 +151,25 @@ def get_samples_by_sample_id(
         return results
 
 
+def get_samples_by_sample_condition_treatment(
+    sample_types: Optional[list[str]],
+    conditions: Optional[list[str]],
+    treatment_types: Optional[list[str]],
+) -> Sequence[Row[tuple[Sample, Treatment]]]:
+    with SessionLocal as db:
+        stmt = select(Sample, Treatment).join(
+            Treatment, Sample.subject_id == Treatment.subject_id
+        )
+        if treatment_types:
+            stmt = stmt.where(Treatment.treatment_name.in_(treatment_types))
+        if conditions:
+            stmt = stmt.where(Treatment.subject_condition_name.in_(conditions))
+        if sample_types:
+            stmt = stmt.where(Sample.sample_type.in_(sample_types))
+        results = db.execute(stmt).all()
+        return results
+
+
 def update_sample(sample_record: Sample) -> None:
     with SessionLocal as db:
         stmt = (

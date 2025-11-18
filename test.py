@@ -1,3 +1,5 @@
-from api.services import data_overview  # , data_subset_analysis, statistical_analysis
+from api.services import (
+    statistical_analysis,
+)  # , data_subset_analysis, statistical_analysis
 
-data_overview_result = data_overview()
+data_overview_result = statistical_analysis()
